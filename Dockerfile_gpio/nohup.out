@@ -1,0 +1,219 @@
+Sending build context to Docker daemon 164.4 kB
+Step 1 : FROM armbuild/alpine
+ ---> 4c5200d71b67
+Step 2 : ENV PATH $PATH:/root
+ ---> Using cache
+ ---> f748f8649f57
+Step 3 : WORKDIR /root
+ ---> Using cache
+ ---> 2d3f1cea42ce
+Step 4 : RUN apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*
+ ---> Running in eab0f8b4958b
+fetch http://nl.alpinelinux.org/alpine/edge/main/armhf/APKINDEX.tar.gz
+(1/33) Upgrading musl (1.1.12-r1 -> 1.1.15-r5)
+(2/33) Upgrading musl-utils (1.1.12-r1 -> 1.1.15-r5)
+(3/33) Installing binutils-libs (2.27-r0)
+(4/33) Installing binutils (2.27-r0)
+(5/33) Installing gmp (6.1.2-r0)
+(6/33) Installing isl (0.17.1-r0)
+(7/33) Installing libgomp (6.2.1-r1)
+(8/33) Installing libatomic (6.2.1-r1)
+(9/33) Installing pkgconf (1.0.2-r0)
+(10/33) Installing libgcc (6.2.1-r1)
+(11/33) Installing mpfr3 (3.1.5-r0)
+(12/33) Installing mpc1 (1.0.3-r0)
+(13/33) Installing libstdc++ (6.2.1-r1)
+(14/33) Installing gcc (6.2.1-r1)
+[91mKilled
+[0mThe command '/bin/sh -c apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*' returned a non-zero code: 137
+Sending build context to Docker daemon 165.9 kB
+Step 1 : FROM armbuild/alpine
+ ---> 4c5200d71b67
+Step 2 : ENV PATH $PATH:/root
+ ---> Using cache
+ ---> f748f8649f57
+Step 3 : WORKDIR /root
+ ---> Using cache
+ ---> 2d3f1cea42ce
+Step 4 : RUN apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*
+ ---> Running in 25d59bffcb32
+fetch http://nl.alpinelinux.org/alpine/edge/main/armhf/APKINDEX.tar.gz
+(1/33) Upgrading musl (1.1.12-r1 -> 1.1.15-r5)
+(2/33) Upgrading musl-utils (1.1.12-r1 -> 1.1.15-r5)
+(3/33) Installing binutils-libs (2.27-r0)
+(4/33) Installing binutils (2.27-r0)
+(5/33) Installing gmp (6.1.2-r0)
+(6/33) Installing isl (0.17.1-r0)
+(7/33) Installing libgomp (6.2.1-r1)
+(8/33) Installing libatomic (6.2.1-r1)
+(9/33) Installing pkgconf (1.0.2-r0)
+(10/33) Installing libgcc (6.2.1-r1)
+(11/33) Installing mpfr3 (3.1.5-r0)
+(12/33) Installing mpc1 (1.0.3-r0)
+(13/33) Installing libstdc++ (6.2.1-r1)
+(14/33) Installing gcc (6.2.1-r1)
+Sending build context to Docker daemon 166.9 kB
+Step 1 : FROM armbuild/alpine
+ ---> 4c5200d71b67
+Step 2 : ENV PATH $PATH:/root
+ ---> Using cache
+ ---> f748f8649f57
+Step 3 : WORKDIR /root
+ ---> Using cache
+ ---> 2d3f1cea42ce
+Step 4 : RUN apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*
+ ---> Running in 3f12f26695d9
+fetch http://nl.alpinelinux.org/alpine/edge/main/armhf/APKINDEX.tar.gz
+(1/33) Upgrading musl (1.1.12-r1 -> 1.1.15-r5)
+(2/33) Upgrading musl-utils (1.1.12-r1 -> 1.1.15-r5)
+(3/33) Installing binutils-libs (2.27-r0)
+(4/33) Installing binutils (2.27-r0)
+(5/33) Installing gmp (6.1.2-r0)
+(6/33) Installing isl (0.17.1-r0)
+(7/33) Installing libgomp (6.2.1-r1)
+(8/33) Installing libatomic (6.2.1-r1)
+(9/33) Installing pkgconf (1.0.2-r0)
+(10/33) Installing libgcc (6.2.1-r1)
+(11/33) Installing mpfr3 (3.1.5-r0)
+(12/33) Installing mpc1 (1.0.3-r0)
+(13/33) Installing libstdc++ (6.2.1-r1)
+(14/33) Installing gcc (6.2.1-r1)
+Sending build context to Docker daemon 167.4 kB
+Step 1 : FROM armbuild/alpine
+ ---> 4c5200d71b67
+Step 2 : ENV PATH $PATH:/root
+ ---> Using cache
+ ---> f748f8649f57
+Step 3 : WORKDIR /root
+ ---> Using cache
+ ---> 2d3f1cea42ce
+Step 4 : RUN apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*
+ ---> Running in 16c1732a1a86
+fetch http://nl.alpinelinux.org/alpine/edge/main/armhf/APKINDEX.tar.gz
+(1/33) Upgrading musl (1.1.12-r1 -> 1.1.15-r5)
+(2/33) Upgrading musl-utils (1.1.12-r1 -> 1.1.15-r5)
+(3/33) Installing binutils-libs (2.27-r0)
+(4/33) Installing binutils (2.27-r0)
+(5/33) Installing gmp (6.1.2-r0)
+(6/33) Installing isl (0.17.1-r0)
+(7/33) Installing libgomp (6.2.1-r1)
+(8/33) Installing libatomic (6.2.1-r1)
+(9/33) Installing pkgconf (1.0.2-r0)
+(10/33) Installing libgcc (6.2.1-r1)
+(11/33) Installing mpfr3 (3.1.5-r0)
+(12/33) Installing mpc1 (1.0.3-r0)
+(13/33) Installing libstdc++ (6.2.1-r1)
+(14/33) Installing gcc (6.2.1-r1)
+Sending build context to Docker daemon 168.4 kB
+Step 1 : FROM armbuild/alpine
+ ---> 4c5200d71b67
+Step 2 : ENV PATH $PATH:/root
+ ---> Using cache
+ ---> f748f8649f57
+Step 3 : WORKDIR /root
+ ---> Using cache
+ ---> 2d3f1cea42ce
+Step 4 : RUN apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*
+ ---> Running in 768d1d0df6f4
+Sending build context to Docker daemon   169 kB
+Step 1 : FROM armbuild/alpine
+ ---> 4c5200d71b67
+Step 2 : ENV PATH $PATH:/root
+ ---> Using cache
+ ---> f748f8649f57
+Step 3 : WORKDIR /root
+ ---> Using cache
+ ---> 2d3f1cea42ce
+Step 4 : RUN apk add --update     build-base     python     python-dev     && rm -rf /var/cache/apk/*
+ ---> Running in a1b2c22a8ad5
+fetch http://nl.alpinelinux.org/alpine/edge/main/armhf/APKINDEX.tar.gz
+(1/33) Upgrading musl (1.1.12-r1 -> 1.1.15-r5)
+(2/33) Upgrading musl-utils (1.1.12-r1 -> 1.1.15-r5)
+(3/33) Installing binutils-libs (2.27-r0)
+(4/33) Installing binutils (2.27-r0)
+(5/33) Installing gmp (6.1.2-r0)
+(6/33) Installing isl (0.17.1-r0)
+(7/33) Installing libgomp (6.2.1-r1)
+(8/33) Installing libatomic (6.2.1-r1)
+(9/33) Installing pkgconf (1.0.2-r0)
+(10/33) Installing libgcc (6.2.1-r1)
+(11/33) Installing mpfr3 (3.1.5-r0)
+(12/33) Installing mpc1 (1.0.3-r0)
+(13/33) Installing libstdc++ (6.2.1-r1)
+(14/33) Installing gcc (6.2.1-r1)
+(15/33) Installing make (4.2.1-r0)
+(16/33) Installing musl-dev (1.1.15-r5)
+(17/33) Installing libc-dev (0.7-r1)
+(18/33) Installing fortify-headers (0.8-r0)
+(19/33) Installing g++ (6.2.1-r1)
+(20/33) Installing build-base (0.4-r1)
+(21/33) Installing libbz2 (1.0.6-r5)
+(22/33) Installing libressl2.4-libcrypto (2.4.4-r0)
+(23/33) Installing expat (2.2.0-r0)
+(24/33) Installing libffi (3.2.1-r2)
+(25/33) Installing gdbm (1.12-r0)
+(26/33) Installing ncurses-terminfo-base (6.0-r7)
+(27/33) Installing ncurses-terminfo (6.0-r7)
+(28/33) Installing ncurses-libs (6.0-r7)
+(29/33) Installing readline (6.3.008-r4)
+(30/33) Installing sqlite-libs (3.15.2-r0)
+(31/33) Installing libressl2.4-libssl (2.4.4-r0)
+(32/33) Installing python2 (2.7.13-r0)
+(33/33) Installing python2-dev (2.7.13-r0)
+Executing busybox-1.24.1-r5.trigger
+OK: 176 MiB in 47 packages
+ ---> 82d4e3ca6c50
+Removing intermediate container a1b2c22a8ad5
+Step 5 : ADD ./RPi.GPIO-0.6.3 /root/RPi.GPIO-0.6.3
+ ---> 4bf739f7ed8b
+Removing intermediate container cbb2f4d69cd1
+Step 6 : RUN cd /root/RPi.GPIO-0.6.3 && python setup.py install
+ ---> Running in b7bc38d89b01
+running install
+running build
+running build_py
+creating build
+creating build/lib.linux-armv7l-2.7
+creating build/lib.linux-armv7l-2.7/RPi
+copying RPi/__init__.py -> build/lib.linux-armv7l-2.7/RPi
+creating build/lib.linux-armv7l-2.7/RPi/GPIO
+copying RPi/GPIO/__init__.py -> build/lib.linux-armv7l-2.7/RPi/GPIO
+running build_ext
+building 'RPi._GPIO' extension
+creating build/temp.linux-armv7l-2.7
+creating build/temp.linux-armv7l-2.7/source
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/py_gpio.c -o build/temp.linux-armv7l-2.7/source/py_gpio.o
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/c_gpio.c -o build/temp.linux-armv7l-2.7/source/c_gpio.o
+[91msource/c_gpio.c:46:0: warning: "PAGE_SIZE" redefined
+ #define PAGE_SIZE  (4*1024)
+ 
+[0m[91mIn file included from /usr/include/limits.h:8:0,
+                 from /usr/include/fortify/stdlib.h:25,
+                 from source/c_gpio.c:25:
+/usr/include/bits/limits.h:3:0: note: this is the location of the previous definition
+ #define PAGE_SIZE 4096
+ 
+[0mgcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/cpuinfo.c -o build/temp.linux-armv7l-2.7/source/cpuinfo.o
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/event_gpio.c -o build/temp.linux-armv7l-2.7/source/event_gpio.o
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/soft_pwm.c -o build/temp.linux-armv7l-2.7/source/soft_pwm.o
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/py_pwm.c -o build/temp.linux-armv7l-2.7/source/py_pwm.o
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/common.c -o build/temp.linux-armv7l-2.7/source/common.o
+gcc -fno-strict-aliasing -Os -fomit-frame-pointer -pipe -fPIC -g -DNDEBUG -Os -fomit-frame-pointer -pipe -fPIC -g -fPIC -I/usr/include/python2.7 -c source/constants.c -o build/temp.linux-armv7l-2.7/source/constants.o
+gcc -shared -Wl,--as-needed build/temp.linux-armv7l-2.7/source/py_gpio.o build/temp.linux-armv7l-2.7/source/c_gpio.o build/temp.linux-armv7l-2.7/source/cpuinfo.o build/temp.linux-armv7l-2.7/source/event_gpio.o build/temp.linux-armv7l-2.7/source/soft_pwm.o build/temp.linux-armv7l-2.7/source/py_pwm.o build/temp.linux-armv7l-2.7/source/common.o build/temp.linux-armv7l-2.7/source/constants.o -L/usr/lib -lpython2.7 -o build/lib.linux-armv7l-2.7/RPi/_GPIO.so
+running install_lib
+creating /usr/lib/python2.7/site-packages/RPi
+creating /usr/lib/python2.7/site-packages/RPi/GPIO
+copying build/lib.linux-armv7l-2.7/RPi/GPIO/__init__.py -> /usr/lib/python2.7/site-packages/RPi/GPIO
+copying build/lib.linux-armv7l-2.7/RPi/_GPIO.so -> /usr/lib/python2.7/site-packages/RPi
+copying build/lib.linux-armv7l-2.7/RPi/__init__.py -> /usr/lib/python2.7/site-packages/RPi
+byte-compiling /usr/lib/python2.7/site-packages/RPi/GPIO/__init__.py to __init__.pyc
+byte-compiling /usr/lib/python2.7/site-packages/RPi/__init__.py to __init__.pyc
+running install_egg_info
+Writing /usr/lib/python2.7/site-packages/RPi.GPIO-0.6.3-py2.7.egg-info
+ ---> 8a745379ed3d
+Removing intermediate container b7bc38d89b01
+Step 7 : CMD /bin/sh
+ ---> Running in e1f1502ae724
+ ---> 9e69f0dc367c
+Removing intermediate container e1f1502ae724
+Successfully built 9e69f0dc367c
