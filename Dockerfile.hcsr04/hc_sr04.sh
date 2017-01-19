@@ -10,10 +10,10 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python hc_sr04.py 23 24)" > /var/log/hc_sr04.txt && \
+echo "$output$(python hc_sr04.py $GPIO_PIN_TRIG $GPIO_PIN_ECHO)" > /var/log/hc_sr04.txt && \
 
 #interval
-sleep 3;
+sleep $INTERVAL;
 
 done
 

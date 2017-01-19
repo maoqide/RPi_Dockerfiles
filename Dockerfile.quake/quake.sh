@@ -10,11 +10,9 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python quake.py 5)" > /var/log/quake.txt && \
-#echo $(python quake.py 5) 
+echo "$output$(python quake.py $GPIO_PIN)" > /var/log/quake.txt && \
 
 #interval
-sleep 3;
-#sleep 1
+sleep $INTERVAL;
 done
 

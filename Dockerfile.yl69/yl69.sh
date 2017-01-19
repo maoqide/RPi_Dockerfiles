@@ -10,10 +10,10 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python yl69.py 5)" > /var/log/yl69.txt && \
+echo "$output$(python yl69.py $GPIO_PIN)" > /var/log/yl69.txt && \
 
 #interval
-sleep 3;
+sleep $INTERVAL;
 
 done
 

@@ -10,11 +10,9 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python rain.py 5)" > /var/log/rain.txt && \
-#echo $(python rain.py 5) 
+echo "$output$(python rain.py $GPIO_PIN)" > /var/log/rain.txt && \
 
 #interval
-sleep 3;
-#sleep 1
+sleep $INTERVAL;
 done
 

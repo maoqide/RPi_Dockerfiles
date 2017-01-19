@@ -10,11 +10,9 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python avoid.py 5)" > /var/log/avoid.txt && \
-#echo $(python avoid.py 5) 
+echo "$output$(python avoid.py $GPIO_PIN)" > /var/log/avoid.txt && \
 
 #interval
-sleep 3;
-#sleep 1
+sleep $INTERVAL
 done
 

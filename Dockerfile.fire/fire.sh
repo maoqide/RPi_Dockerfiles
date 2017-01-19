@@ -10,11 +10,9 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python fire.py 5)" > /var/log/fire.txt && \
-#echo $(python fire.py 5) 
+echo "$output$(python fire.py $GPIO_PIN)" > /var/log/fire.txt && \
 
 #interval
-sleep 3;
-#sleep 1
+sleep $INTERVAL;
 done
 

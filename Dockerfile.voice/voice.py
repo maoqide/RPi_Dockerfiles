@@ -14,5 +14,5 @@ if GPIO.input(pir):
     print 1
 else:
     print 0
-time.sleep(0.1)
+GPIO.cleanup(pir)
 

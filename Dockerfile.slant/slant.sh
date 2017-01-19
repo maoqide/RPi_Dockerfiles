@@ -10,11 +10,9 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python slant.py 5)" > /var/log/slant.txt && \
-#echo $(python slant.py 5)
+echo "$output$(python slant.py $GPIO_PIN)" > /var/log/slant.txt && \
 
 #interval
-sleep 3
-
+sleep $INTERVAL;
 done
 

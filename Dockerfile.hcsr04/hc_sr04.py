@@ -12,9 +12,6 @@ else:
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-#TRIG = 23
-#ECHO = 24
-
 GPIO.setup(TRIG,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
 
@@ -42,3 +39,4 @@ if distance > 2 and distance < 400:
     print distance - 0.5
 else:
     print -1
+GPIO.cleanup((TRIG, ECHO))

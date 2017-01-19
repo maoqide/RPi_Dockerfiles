@@ -1,4 +1,5 @@
 #!/bin/sh
+
 while true;
 do
 
@@ -9,10 +10,9 @@ output=$(date +%s) && \
 output="$output," && \
 
 #main
-echo "$output$(python sr501.py $GPIO_PIN)" > /var/log/hc_sr501.txt && \
+echo "$output$(python light.py $GPIO_PIN)" > /var/log/light.txt && \
 
 #interval
 sleep $INTERVAL;
-
 done
 

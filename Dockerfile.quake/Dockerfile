@@ -1,4 +1,4 @@
-FROM maoqide/rpi_gpio
+FROM maoqide/rpi-gpio
 
 ENV PATH $PATH:/root
 WORKDIR /root

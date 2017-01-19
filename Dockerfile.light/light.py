@@ -5,7 +5,7 @@ import time
 if len(sys.argv) == 2:
     pir = int(sys.argv[1])
 else:
-    print "usage: sudo python fire.py pinGPIO#"
+    print "usage: sudo python light.py pinGPIO#"
     sys.exit(1)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pir, GPIO.IN)
@@ -15,3 +15,4 @@ if GPIO.input(pir):
 else:
     print 0
 GPIO.cleanup(pir)
+
