@@ -1,8 +1,8 @@
 export REPOSITORY=localtest
-export MAILTO_LIST=qmao@linkernetworks.com
-export SMTPSERVER=smtp.qiye.163.com
-export MAILHOST=qmao@linkernetworks.com
-export PASSWORD=Mao940715
+export MAILTO_LIST=xxx1@xxx.com|xxx2@xxx.com
+export SMTPSERVER=smtp.xxx.com
+export MAILHOST=xxx@xxx.com
+export PASSWORD=xxxxxx
 
 build:
 	docker build -t  ${REPOSITORY}/rpi-dht11-mail .
