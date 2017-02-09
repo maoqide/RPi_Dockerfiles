@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  rpi-sensor-voice:
+    image: ${REPOSITORY}/rpi-sensor-voice
+    privileged: true
+    restart: always
+    volumes:
+     - /var/log:/var/log
+    environment:
+     - GPIO_PIN=5
+     - INTERVAL=0.2
+
+  rpi-sensor-light:
+    image: ${REPOSITORY}/rpi-sensor-light
+    privileged: true
+    restart: always
+    volumes:
+     - /var/log:/var/log
+    environment:
+     - GPIO_PIN=17
+     - INTERVAL=0.2
+
+  rpi-laser-voice-light:
+    image: ${REPOSITORY}/rpi-laser-voice-light
+    privileged: true
+    restart: always
+    depends_on:
+     - rpi-sensor-voice
+     - rpi-sensor-light
+    volumes:
+     - /var/log:/var/log
+    environment:
+     - GPIO_PIN=12
+     - INTERVAL=0.2

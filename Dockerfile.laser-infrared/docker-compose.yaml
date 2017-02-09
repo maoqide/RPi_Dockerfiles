@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  rpi-sensor-infrared:
+    image: localtest/rpi-sensor-infrared
+    privileged: true
+    restart: always
+    volumes:
+     - /var/log:/var/log
+    environment:
+     - GPIO_PIN=5
+     - INTERVAL=0.2
+
+  rpi-laser-infrared:
+    image: localtest/rpi-laser-infrared
+    privileged: true
+    restart: always
+    depends_on:
+     - rpi-sensor-infrared
+    volumes:
+     - /var/log:/var/log
+    environment:
+     - GPIO_PIN=12
+     - INTERVAL=0.2
