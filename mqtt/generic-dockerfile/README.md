@@ -12,13 +12,19 @@ an generic image using mqtt for raspberry pi.
 ### what can do
 you can start multi active sensors, and if any one of them publish SIGNAL_DO to a topic, the passive sensor subscribed to the same topic will DO.
 
+### start mosquitto (on raspberry pi)
+```shell
+# run mosquitto
+docker run --restart=always -d -p 1883:1883 maoqide/mosquitto-alpine
+```
+
 ## active
 active sensors like pir/light sensor/voice sensor...    
 it can output 0/1 as result.
 
 ### command
 ```shell
-# run
+# run publisher
 docker run -d --privileged --env GPIO_PIN=17 --env MQTT_BROKER=192.168.10.245 --env MQTT_PORT=1883 --env MQTT_KEEPALIVE_INTERVAL=60 --env MQTT_TOPIC='test/light' --env SIGNAL_DO=1 --name test_light maoqide/rpi-mqtt-publisher
 ```
 
@@ -39,7 +45,7 @@ you can input 0/1 to control it.
 
 ### command
 ```shell
-# run
+# run subscriber
 docker run -d --privileged --env GPIO_PIN=20 --env MQTT_BROKER=192.168.10.245 --env MQTT_TOPIC='test/#' maoqide/rpi-mqtt-subscriber
 ```
 
