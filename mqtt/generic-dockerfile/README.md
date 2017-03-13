@@ -10,7 +10,7 @@ an generic image using mqtt for raspberry pi.
 - passive sensors
 
 ### what can do
-you can start multi active sensors, and if any one of them publish SIGNAL_DO to a topic, the passive sensor subscribed to the same topic with DO.
+you can start multi active sensors, and if any one of them publish SIGNAL_DO to a topic, the passive sensor subscribed to the same topic will DO.
 
 ## active
 active sensors like pir/light sensor/voice sensor...    
