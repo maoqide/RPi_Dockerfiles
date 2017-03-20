@@ -1,0 +1,18 @@
+{
+  "weather-station-control": {
+    "type": "semit",
+    "action": ["sh", "control.sh"]
+  },
+  "weather-station-rain": {
+    "type": "emit", 
+    "action": ["python", "rain.py $GPIO_RAIN"]
+  },
+  "weather-station-dht": {
+    "type": "emit", 
+    "action": ["python", "dht.py $GPIO_DHT"]
+  },
+  "weather-station-pm25": {
+    "type": "emit", 
+    "action": ["python", "pm25.py"]
+  }
+}
