@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  sensor-pm25:
+    image: localtest/rpi-mqtt-pm25
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     - PM25_THRESHOLD=71
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=test/pm
+
+  sensor-dht:
+    image: localtest/rpi-mqtt-dht22
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     - GPIO_PIN=4
+     - TEMP_THRESHOLD=40
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=test/dht
+
+  sensor-rain:
+    image: localtest/rpi-mqtt-publisher
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     - GPIO_PIN=17
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=test/rain
+     - SIGNAL_DO=1
