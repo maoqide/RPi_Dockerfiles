@@ -11,7 +11,7 @@ services:
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
-     - MQTT_TOPIC=test/pm
+     - MQTT_TOPIC=weather/pm
 
   sensor-dht:
     image: localtest/rpi-mqtt-dht22
@@ -24,7 +24,7 @@ services:
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
-     - MQTT_TOPIC=test/dht
+     - MQTT_TOPIC=weather/dht
 
   sensor-rain:
     image: localtest/rpi-mqtt-publisher
@@ -36,5 +36,5 @@ services:
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
-     - MQTT_TOPIC=test/rain
+     - MQTT_TOPIC=weather/rain
      - SIGNAL_DO=1

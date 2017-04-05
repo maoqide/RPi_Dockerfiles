@@ -1,0 +1,72 @@
+version: '2'
+
+services:
+  sensor-hcsr04:
+    image: localtest/rpi-mqtt-hcsr04
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     --env GPIO_PIN_TRIG=23
+     --env GPIO_PIN_ECHO=24
+     - DIST_THRESHOLD=50
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=monitor/distance
+
+  sensor-mq2:
+    image: localtest/rpi-mqtt-publisher
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     - GPIO_PIN=17
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=monitor/mq2
+     - SIGNAL_DO=1
+
+  camera:
+    image: localtest/rpi-mqtt-capture
+    privileged: true
+    restart: always
+    network_mode: bridge
+    volumes:
+     - /root/photo:/root/photo
+    depends_on:
+     - sensor-hcsr04
+    environment:
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=monitor/distance
+
+  led:
+    image: localtest/rpi-mqtt-subscriber
+    privileged: true
+    restart: always
+    network_mode: bridge
+    depends_on:
+     - sensor-hcsr04
+    environment:
+     - GPIO_PIN=20
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=monitor/distance
+
+  buzzer:
+    image: localtest/rpi-mqtt-subscriber
+    privileged: true
+    restart: always
+    network_mode: bridge
+    depends_on:
+     - sensor-mq2
+    environment:
+     - GPIO_PIN=21
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=monitor/mq2
