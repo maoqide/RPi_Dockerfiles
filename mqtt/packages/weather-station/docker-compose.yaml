@@ -12,6 +12,7 @@ services:
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=weather/pm
+     #- MQTT_TOPIC_DISPLAY=weather-display/pm
 
   sensor-dht:
     image: localtest/rpi-mqtt-dht22
@@ -20,11 +21,12 @@ services:
     network_mode: bridge
     environment:
      - GPIO_PIN=4
-     - TEMP_THRESHOLD=40
+     - TEMP_THRESHOLD=30
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=weather/dht
+     #- MQTT_TOPIC_DISPLAY=weather-display/dht
 
   sensor-rain:
     image: localtest/rpi-mqtt-publisher
@@ -32,9 +34,26 @@ services:
     restart: always
     network_mode: bridge
     environment:
-     - GPIO_PIN=17
+     - GPIO_PIN=24
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=weather/rain
      - SIGNAL_DO=1
+
+  buzzer:
+    image: localtest/rpi-mqtt-subscriber
+    privileged: true
+    restart: always
+    network_mode: bridge
+    depends_on:
+     - sensor-pm25
+     - sensor-dht
+     -  sensor-rain
+    environment:
+     - GPIO_PIN=11
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=weather/#
+
