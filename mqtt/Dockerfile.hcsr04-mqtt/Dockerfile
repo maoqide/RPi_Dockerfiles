@@ -1,0 +1,12 @@
+FROM maoqide/rpi-gpio
+
+ENV PATH $PATH:/root
+WORKDIR /root
+
+RUN pip install paho-mqtt
+
+ADD ./publish.py /root/publish.py
+ADD ./hc_sr04.py /root/hc_sr04.py
+ADD ./hc_sr04.sh /root/hc_sr04.sh
+
+ENTRYPOINT ["hc_sr04.sh"]

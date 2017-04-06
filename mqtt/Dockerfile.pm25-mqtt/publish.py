@@ -1,14 +1,14 @@
 import sys
 import paho.mqtt.client as mqtt
 
-if len(sys.argv) == 6:
+if ( len(sys.argv) == 6 or len(sys.argv) == 8 ):
     MQTT_BROKER = sys.argv[1]
     MQTT_PORT = int(sys.argv[2])
     MQTT_KEEPALIVE_INTERVAL = int(sys.argv[3])
     MQTT_TOPIC = sys.argv[4]
     MQTT_MSG = sys.argv[5]
 else:
-    print "usage: sudo python publish.py MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC MQTT_MSG"
+    print "usage: sudo python publish.py MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC MQTT_MSG MQTT_TOPIC_DISPLAY MQTT_MSG_DISPLAY"
     sys.exit(1)
 
 # Define on_connect event Handler
@@ -31,6 +31,11 @@ mqttc.connect(MQTT_BROKER, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
 
 # Publish message to MQTT Topic 
 mqttc.publish(MQTT_TOPIC,MQTT_MSG)
+
+if len(sys.argv) == 8:
+    MQTT_TOPIC_DISPLAY = sys.argv[6]
+    MQTT_MSG_DISPLAY = sys.argv[7]
+    mqttc.publish(MQTT_TOPIC_DISPLAY,MQTT_MSG_DISPLAY)
 
 # Disconnect from MQTT_Broker
 mqttc.disconnect()
