@@ -24,7 +24,7 @@ def capture(num, interval):
     camera.start_preview()
 
     for i in range(num):
-        camera.capture(time.strftime("%Y%m%d%H%M%S")+'.jpg')
+        camera.capture('/root/photo/'+time.strftime("%Y%m%d%H%M%S")+'.jpg')
         time.sleep(interval)
 
     camera.stop_preview()

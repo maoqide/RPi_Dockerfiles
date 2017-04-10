@@ -13,6 +13,7 @@ RUN apt-get update -y &&\
     rm -rf /var/cache/apt
 
 RUN pip install paho-mqtt
+VOLUME /root/photo
 ADD ./capture.py /root/capture.py
 ADD ./capture.sh /root/capture.sh
 

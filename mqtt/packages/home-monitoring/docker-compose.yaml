@@ -7,9 +7,9 @@ services:
     restart: always
     network_mode: bridge
     environment:
-     --env GPIO_PIN_TRIG=23
-     --env GPIO_PIN_ECHO=24
-     - DIST_THRESHOLD=50
+     - GPIO_PIN_TRIG=23
+     - GPIO_PIN_ECHO=24
+     - DIST_THRESHOLD=30
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
@@ -21,7 +21,7 @@ services:
     restart: always
     network_mode: bridge
     environment:
-     - GPIO_PIN=17
+     - GPIO_PIN=14
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
@@ -34,7 +34,7 @@ services:
     restart: always
     network_mode: bridge
     volumes:
-     - /root/photo:/root/photo
+     - /home/pi/photo:/root/photo
     depends_on:
      - sensor-hcsr04
     environment:
@@ -51,7 +51,7 @@ services:
     depends_on:
      - sensor-hcsr04
     environment:
-     - GPIO_PIN=20
+     - GPIO_PIN=26
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
@@ -65,7 +65,7 @@ services:
     depends_on:
      - sensor-mq2
     environment:
-     - GPIO_PIN=21
+     - GPIO_PIN=12
      - MQTT_BROKER=192.168.10.245
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
