@@ -24,9 +24,9 @@ services:
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=smartlamp/rain
-     - SIGNAL_DO=1
+     - SIGNAL_DO=0
 
-  sensor-camera-button:
+  sensor-camera-ctl:
     image: localtest/rpi-mqtt-publisher
     privileged: true
     restart: always
@@ -64,3 +64,37 @@ services:
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=smartlamp/infrared
      - SIGNAL_DO=1
+
+  camera:
+    image: localtest/rpi-mqtt-capture
+    privileged: true
+    restart: always
+    network_mode: bridge
+    volumes:
+     - /home/pi/photo:/root/photo
+    depends_on:
+     - sensor-camera-ctl
+    environment:
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=smartlamp/camera
+
+  led:
+    image: localtest/rpi-mqtt-subscriber
+    privileged: true
+    restart: always
+    network_mode: bridge
+    depends_on:
+     - sensor-pm25
+     - sensor-rain
+     - sensor-camera-ctl
+     - sensor-light
+     - sensor-infrared
+    environment:
+     - GPIO_PIN=26
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=smartlamp/#
+
