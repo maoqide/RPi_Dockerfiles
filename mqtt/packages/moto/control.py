@@ -40,22 +40,26 @@ def on_message(mosq, obj, msg):
         action()
 
 def action():
-    img=capture()
-    text=tesseract(img)
+    img=ocr.capture()
+    text=ocr.tesseract(img)
 
     if (text.lower() == "forward"):
+        print "action: ", text
         moto.forward()
         time.sleep(1)
         moto.stop()
     elif (text.lower() == "backward"):
+        print "action: ", text
         moto.backward()
         time.sleep(1)
         moto.stop()
     elif (text.lower() == "left"):
+        print "action: ", text
         moto.left()
         time.sleep(1)
         moto.stop()
     elif (text.lower() == "right"):
+        print "action: ", text
         moto.right()
         time.sleep(1)
         moto.stop()

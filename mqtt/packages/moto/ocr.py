@@ -18,7 +18,10 @@ def tesseract(img, cleanup=True, options=''):
 def capture():
     camera=PiCamera()
     img=time.strftime("%Y%m%d%H%M%S")+'.jpg'
-    camera.capture(img)
+    try:
+        camera.capture(img)
+    finally:
+        camera.close()
     return img
 
 #img=capture()
