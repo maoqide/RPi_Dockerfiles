@@ -5,7 +5,7 @@ import paho.mqtt.client as mqtt
 import sys,time
 
 if len(sys.argv) == 5:
-    MQTT_BROKER = sys.argv[2]
+    MQTT_BROKER = sys.argv[1]
     MQTT_PORT = int(sys.argv[2])
     MQTT_KEEPALIVE_INTERVAL = int(sys.argv[3])
     MQTT_TOPIC = sys.argv[4]
@@ -17,10 +17,10 @@ else:
 # set pin header, (IN1, IN2, IN3, IN4, ENA, ENB)
 moto = motoctl_pwm.Moto(6, 13, 19, 26, 21, 20)
 
-MQTT_BROKER = "192.168.10.245"
-MQTT_PORT = 1883
-MQTT_KEEPALIVE_INTERVAL = 30
-MQTT_TOPIC = "test"
+#MQTT_BROKER = "192.168.10.245"
+#MQTT_PORT = 1883
+#MQTT_KEEPALIVE_INTERVAL = 30
+#MQTT_TOPIC = "test"
 
 # Define on_connect event Handler
 def on_connect(mosq, obj, rc):
