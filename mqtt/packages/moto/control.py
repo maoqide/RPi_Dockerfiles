@@ -36,7 +36,7 @@ def on_message(mosq, obj, msg):
     print msg.topic, msg.payload
     sys.stdout.flush()			#flush stdout buffer
     if msg.payload == "1":
-        time.sleep(1)
+        #time.sleep(1)
         action()
 
 def action():
