@@ -55,17 +55,17 @@ class Moto():
     def right(self, duty=50):
         Moto._pb.start(duty)
         #_pb.ChangeDutyCycle(duty)
-        GPIO.output(self.out1, 0)
+        GPIO.output(self.out1, 1)
         GPIO.output(self.out2, 0)
-        GPIO.output(self.out3, 1)
+        GPIO.output(self.out3, 0)
         GPIO.output(self.out4, 0)
 
     def left(self, duty=50):
         Moto._pa.start(duty)
         #_pa.ChangeDutyCycle(duty)
-        GPIO.output(self.out1, 1)
+        GPIO.output(self.out1, 0)
         GPIO.output(self.out2, 0)
-        GPIO.output(self.out3, 0)
+        GPIO.output(self.out3, 1)
         GPIO.output(self.out4, 0)
 
     def cleanup(self):
