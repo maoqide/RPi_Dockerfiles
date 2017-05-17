@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  moto:
+    image: localtest/rpi-moto
+    privileged: true
+    restart: always
+    network_mode: bridge
+    depends_on:
+     - sensor-hcsr04
+    environment:
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=moto
+
+  sensor-hcsr04:
+    image: localtest/rpi-mqtt-hcsr04
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     - INTERVAL=1
+     - GPIO_PIN_TRIG=14
+     - GPIO_PIN_ECHO=15
+     - DIST_THRESHOLD=50
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC=moto

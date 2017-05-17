@@ -13,6 +13,11 @@ else:
     print "usage: sudo python control.py MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC"
     sys.exit(1)
 
+led=16
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(led, GPIO.OUT)               #led pin
+
 
 # set pin header, (IN1, IN2, IN3, IN4, ENA, ENB)
 moto = motoctl_pwm.Moto(6, 13, 19, 26, 21, 20)
@@ -45,24 +50,32 @@ def action():
 
     if (text.lower() == "forward"):
         print "action: ", text
+        GPIO.output(led, 1)
         moto.forward()
         time.sleep(1)
         moto.stop()
+        GPIO.output(led, 0)
     elif (text.lower() == "backward"):
         print "action: ", text
+        GPIO.output(led, 1)
         moto.backward()
         time.sleep(1)
         moto.stop()
+        GPIO.output(led, 0)
     elif (text.lower() == "left"):
         print "action: ", text
+        GPIO.output(led, 1)
         moto.left()
         time.sleep(1)
         moto.stop()
+        GPIO.output(led, 0)
     elif (text.lower() == "right"):
         print "action: ", text
+        GPIO.output(led, 1)
         moto.right()
         time.sleep(1)
         moto.stop()
+        GPIO.output(led, 0)
     else:
         print text, ", action not allowed."
 
