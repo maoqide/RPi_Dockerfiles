@@ -18,6 +18,11 @@ if [ ! -n "$SIGNAL_DO" ]; then
   SIGNAL_DO=1
 fi
 
+if [ ! -n "$INTERVAL" ]; then
+  INTERVAL=1
+fi
+
+
 echo $GPIO_PIN $MQTT_BROKER $MQTT_PORT $MQTT_KEEPALIVE_INTERVAL $MQTT_TOPIC $SIGNAL_DO
 
 #loop
@@ -25,4 +30,5 @@ while true
 do
 	#python publish.py 17 192.168.10.245 1883 30 test/light 1
 	python publish.py $GPIO_PIN $MQTT_BROKER $MQTT_PORT $MQTT_KEEPALIVE_INTERVAL $MQTT_TOPIC $SIGNAL_DO
+	sleep $INTERVAL
 done
