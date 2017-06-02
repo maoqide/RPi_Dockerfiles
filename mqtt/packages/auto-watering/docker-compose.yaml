@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  auto-watering:
+    image: localtest/mqtt-auto-watering
+    privileged: true
+    restart: always
+    network_mode: bridge
+    environment:
+     - GPIO_FLOW=12
+     - GPIO_SOIL=20
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC='test/auto-watering'
+     - FLOW_MIN=30
+
+  relay:
+    image: localtest/rpi-mqtt-subscriber
+    privileged: true
+    restart: always
+    network_mode: bridge
+    depends_on:
+     - auto-watering
+    environment:
+     - GPIO_PIN=26
+     - MQTT_BROKER=192.168.10.245
+     - MQTT_PORT=1883
+     - MQTT_KEEPALIVE_INTERVAL=60
+     - MQTT_TOPIC='test/auto-watering'
+

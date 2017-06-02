@@ -5,15 +5,16 @@ import time, sys
 #GPIO_FLOW = 12
 #GPIO_SOIL = 20
 
-if len(sys.argv) == 7:
+if len(sys.argv) == 8:
     GPIO_FLOW = int(sys.argv[1])
     GPIO_SOIL = int(sys.argv[2])
     MQTT_BROKER = sys.argv[3]
     MQTT_PORT = int(sys.argv[4])
     MQTT_KEEPALIVE_INTERVAL = int(sys.argv[5])
     MQTT_TOPIC = sys.argv[6]
+    FLOW_MIN = int(sys.argv[7])
 else:
-    print "usage: sudo python auto-water.py GPIO_FLOW GPIO_SOIL MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC"
+    print "usage: sudo python auto-water.py GPIO_FLOW GPIO_SOIL MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC FLOW_MIN"
     sys.exit(1)
 
 # setup GPIO
@@ -32,10 +33,8 @@ count_time = 0
 
 global flow_signal
 flow_signal = 1		# enough water, can start pump
-#global soil_signal
-#soil_signal = 0		# humid, need not water
-global last_signal
-last_signal = 1			# last one signal to pass to relay, 0 to start pump.
+#global last_signal
+#last_signal = 1			# last one signal to pass to relay, 0 to start pump.
 
 # Define on_connect event Handler
 def on_connect(mosq, obj, rc):
@@ -55,12 +54,13 @@ def countPulse(channel):
     if count_time  >= 10.0:
 
         # count = 98 * flow (L/min) * time (s)
-        flow=int(count / 980)
-        
+        flow=int(count / 980 * 1000 / 60)
+        print flow, "ml/s"
+        sys.stdout.flush()
 
-        if flow > 2:
+        if flow > FLOW_MIN:
             flow_signal = 1
-        else:
+        elif flow > 0:
             flow_signal = 0
         
 	# re initialization
@@ -82,18 +82,17 @@ mqttc.connect(MQTT_BROKER, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
 
 while True:
     try:
-        if (GPIO.input(GPIO_SOIL) and flow_signal):
-
-            if last_signal:
-                print 0					### 0 to tell relay to start pump
-            
+        soil = GPIO.input(GPIO_SOIL)
+        print 'soil: ', soil, "flow: ", flow_signal
+        if (soil and flow_signal):
+            print 0					### 0 to tell relay to start pump
             MQTT_MSG=0
-            last_signal = 0
+#            last_signal = 0
 
         else:
             print 1
             MQTT_MSG=1					### 1 to stop
-            last_signal = 1
+#            last_signal = 1
 
         sys.stdout.flush()	#flush stdout buffer
 
@@ -102,7 +101,8 @@ while True:
 
         time.sleep(1)
     except:
+        print "exceptions.."
         GPIO.cleanup([GPIO_FLOW, GPIO_SOIL])
         # Disconnect from MQTT_Broker
         mqttc.disconnect()
-
+        break
