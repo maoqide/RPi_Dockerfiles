@@ -25,7 +25,7 @@ class Moto():
         GPIO.setup(self.enb, GPIO.OUT)
         GPIO.output(self.ena, 1)
         GPIO.output(self.enb, 1)
-        Moto._pa=GPIO.PWM(self.ena, self.freq)
+        Moto._pa=GPIO.PWM(self.ena, self.freq)		# freq is frequency in Hz
         Moto._pb=GPIO.PWM(self.enb, self.freq)
 
     def stop(self):
@@ -36,7 +36,7 @@ class Moto():
         GPIO.output(self.out3, 0)
         GPIO.output(self.out4, 0)
 
-    def forward(self, duty=50):
+    def forward(self, duty=100):		# duty cycle (0.0 <= duty <= 100.0)
         Moto._pa.start(duty)
         Moto._pb.start(duty)
         GPIO.output(self.out1, 1)
@@ -44,7 +44,7 @@ class Moto():
         GPIO.output(self.out3, 1)
         GPIO.output(self.out4, 0)
 
-    def backward(self, duty=50):
+    def backward(self, duty=100):
         Moto._pa.start(duty)
         Moto._pb.start(duty)
         GPIO.output(self.out1, 0)
@@ -52,7 +52,7 @@ class Moto():
         GPIO.output(self.out3, 0)
         GPIO.output(self.out4, 1)
 
-    def right(self, duty=50):
+    def right(self, duty=100):
         Moto._pa.start(duty)
         #_pb.ChangeDutyCycle(duty)
         GPIO.output(self.out1, 1)
@@ -60,7 +60,7 @@ class Moto():
         GPIO.output(self.out3, 0)
         GPIO.output(self.out4, 0)
 
-    def left(self, duty=50):
+    def left(self, duty=100):
         Moto._pb.start(duty)
         #_pa.ChangeDutyCycle(duty)
         GPIO.output(self.out1, 0)

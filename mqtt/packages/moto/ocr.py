@@ -4,12 +4,14 @@ from PIL import Image
 import pytesseract
 import time
 
+# imgBytes is a a io.BytesIO Object
 def tesseract(imgBytes):
     # PIL.Image
     pilObj=Image.open(imgBytes)
     text=pytesseract.image_to_string(pilObj)
     return text
 
+# capture, return a io.BytesIO Object
 def capture():
     stream=BytesIO()
     camera=PiCamera()

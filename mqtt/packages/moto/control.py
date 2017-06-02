@@ -46,31 +46,36 @@ def on_message(mosq, obj, msg):
 
 def action():
     img=ocr.capture()
-    text=ocr.tesseract(img)
+    try:
+        text=ocr.tesseract(img).encode("ascii")	# the instruction get from camera
+    except:
+        return
+    instruction=filter(str.isalpha, text).lower()	# trim error ocr characters.
 
-    if (text.lower() == "forward"):
-        print "action: ", text
+    # fuzzy match instruction for higher success rate
+    if (instruction in "forward" and len(instruction) > 3 and instruction != "ward"):
+        print "action: ", text, instruction
         GPIO.output(led, 1)
         moto.forward()
         time.sleep(1)
         moto.stop()
         GPIO.output(led, 0)
-    elif (text.lower() == "backward"):
-        print "action: ", text
+    elif (instruction in "backward" and len(instruction) > 3 and instruction != "ward"):
+        print "action: ", text, instruction
         GPIO.output(led, 1)
         moto.backward()
         time.sleep(1)
         moto.stop()
         GPIO.output(led, 0)
-    elif (text.lower() == "left"):
-        print "action: ", text
+    elif (instruction in "left" and len(instruction) > 2):
+        print "action: ", text, instruction
         GPIO.output(led, 1)
         moto.left()
         time.sleep(1)
         moto.stop()
         GPIO.output(led, 0)
-    elif (text.lower() == "right"):
-        print "action: ", text
+    elif (instruction in "right" and len(instruction) > 2):
+        print "action: ", text, instruction
         GPIO.output(led, 1)
         moto.right()
         time.sleep(1)
