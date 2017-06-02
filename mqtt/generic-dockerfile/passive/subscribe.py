@@ -3,14 +3,15 @@ import sys
 import time
 import paho.mqtt.client as mqtt
 
-if len(sys.argv) == 6:
+if len(sys.argv) == 7:
     pir = int(sys.argv[1])
     MQTT_BROKER = sys.argv[2]
     MQTT_PORT = int(sys.argv[3])
     MQTT_KEEPALIVE_INTERVAL = int(sys.argv[4])
     MQTT_TOPIC = sys.argv[5]
+    SIGNAL_DO = int(sys.argv[6])
 else:
-    print "usage: sudo python subscribe.py GPIO_PIN MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC"
+    print "usage: sudo python subscribe.py GPIO_PIN MQTT_BROKER MQTT_PORT MQTT_KEEPALIVE_INTERVAL MQTT_TOPIC SIGNAL_DO"
     sys.exit(1)
 
 # Define Variables
@@ -27,8 +28,8 @@ GPIO.setup(pir, GPIO.OUT)               #set relay output
 
 # Define on_connect event Handler
 def on_connect(mosq, obj, rc):
-	#Subscribe to a the Topic
-	mqttc.subscribe(MQTT_TOPIC, 0)
+    #Subscribe to a the Topic
+    mqttc.subscribe(MQTT_TOPIC, 0)
 
 # Define on_subscribe event Handler
 def on_subscribe(mosq, obj, mid, granted_qos):
@@ -36,17 +37,21 @@ def on_subscribe(mosq, obj, mid, granted_qos):
 
 # Define on_message event Handler
 def on_message(mosq, obj, msg):
-	global MSGS
-	action = 0
-	print msg.topic, msg.payload
-	if msg.payload != "1" and msg.payload != "0":
-		print "error message: ", msg.payload 
-		return
-	MSGS[msg.topic] = int(msg.payload)
-	for topic in MSGS:
-		action = (MSGS[topic] | action)
-	print "action: ", action
-	GPIO.output(pir, action)	#Turn ON/OFF relay
+    global MSGS
+    action = 0
+    print msg.topic, msg.payload
+    if msg.payload != "1" and msg.payload != "0":
+        print "error message: ", msg.payload 
+        return
+    MSGS[msg.topic] = int(msg.payload)
+    for topic in MSGS:
+        action = (MSGS[topic] | action)
+
+    if SIGNAL_DO == 0:
+        action = 1 ^ action
+
+    print "action: ", action
+    GPIO.output(pir, action)	#Turn ON/OFF relay
 
 # Initiate MQTT Client
 mqttc = mqtt.Client()
