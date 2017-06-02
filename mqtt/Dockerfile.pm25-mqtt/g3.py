@@ -1,4 +1,5 @@
 #!/bin/python
+import os
 import serial
 import time
 import sys
@@ -56,6 +57,7 @@ class g3sensor():
             self.data = self.read_data()
             return self.data
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     air=g3sensor()
-    print air.read("/dev/ttyAMA0")
+    devtty=os.getenv("TTY", "ttyAMA0")	# maybe ttyAMA0 or ttyS0
+    print air.read("/dev/" + devtty)
