@@ -12,6 +12,7 @@ services:
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=weather/pm
+     - TTY=ttyS0
      #- MQTT_TOPIC_DISPLAY=weather-display/pm
 
   sensor-dht:
@@ -56,4 +57,5 @@ services:
      - MQTT_PORT=1883
      - MQTT_KEEPALIVE_INTERVAL=60
      - MQTT_TOPIC=weather/#
+     - SIGNAL_DO=0
 
