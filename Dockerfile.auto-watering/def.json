@@ -1,6 +1,0 @@
-{
-  "auto-watering": {
-    "type": "semit",
-    "action": ["sh", "auto-watering.sh"]
-  }
-}
